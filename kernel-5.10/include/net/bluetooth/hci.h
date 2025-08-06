@@ -246,6 +246,21 @@ enum {
 	 * HCI after resume.
 	 */
 	HCI_QUIRK_NO_SUSPEND_NOTIFIER,
+
+	/*
+	 * When this quirk is set, LE tx power is not queried on startup
+	 * and the min/max tx power values default to HCI_TX_POWER_INVALID.
+	 *
+	 * This quirk can be set before hci_register_dev is called or
+	 * during the hdev->setup vendor callback.
+	 */
+	HCI_QUIRK_BROKEN_READ_TRANSMIT_POWER,
+
+	/* When this quirk is set, the Read Synchronization Train Parameters
+	 * command is not sent. Some broken controllers advertise support
+	 * for this feature but reject the command.
+	 */
+	HCI_QUIRK_BROKEN_SYNC_TRAIN_PARAMS,
 };
 
 /* HCI device flags */
