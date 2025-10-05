@@ -31,14 +31,14 @@ if [ -z "$BUILD_KERNEL_VERSION" ]; then
     export BUILD_KERNEL_VERSION="dev"
 fi
 
-echo -e "CONFIG_LOCALVERSION_AUTO=n\nCONFIG_LOCALVERSION=\"-ravindu644-${BUILD_KERNEL_VERSION}\"\n" > "${WDIR}/custom_defconfigs/version_defconfig"
+echo -e "CONFIG_LOCALVERSION_AUTO=n\nCONFIG_LOCALVERSION=\"-KKRT-${BUILD_KERNEL_VERSION}\"\n" > "${WDIR}/custom_defconfigs/version_defconfig"
 
 # CHANGED DIR
 cd "${WDIR}/kernel-5.10"
 
 # Cook the build config
 python2 scripts/gen_build_config.py \
-    --kernel-defconfig a24_00_defconfig \
+    --kernel-defconfig a24_defconfig \
     --kernel-defconfig-overlays entry_level.config \
     -m user \
     -o ../out/target/product/a24/obj/KERNEL_OBJ/build.config
