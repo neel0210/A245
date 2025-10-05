@@ -38,19 +38,19 @@ cd "${WDIR}/kernel-5.10"
 
 # Cook the build config
 python2 scripts/gen_build_config.py \
-    --kernel-defconfig a16_00_defconfig \
+    --kernel-defconfig a24_00_defconfig \
     --kernel-defconfig-overlays entry_level.config \
     -m user \
-    -o ../out/target/product/a16/obj/KERNEL_OBJ/build.config
+    -o ../out/target/product/a24/obj/KERNEL_OBJ/build.config
 
 # OEM's variables from build_kernel.sh/README_Kernel.txt
 export ARCH=arm64
 export PLATFORM_VERSION=13
 export CROSS_COMPILE="aarch64-linux-gnu-"
 export CROSS_COMPILE_COMPAT="arm-linux-gnueabi-"
-export OUT_DIR="../out/target/product/a16/obj/KERNEL_OBJ"
-export DIST_DIR="../out/target/product/a16/obj/KERNEL_OBJ"
-export BUILD_CONFIG="../out/target/product/a16/obj/KERNEL_OBJ/build.config"
+export OUT_DIR="../out/target/product/a24/obj/KERNEL_OBJ"
+export DIST_DIR="../out/target/product/a24/obj/KERNEL_OBJ"
+export BUILD_CONFIG="../out/target/product/a24/obj/KERNEL_OBJ/build.config"
 export MERGE_CONFIG="${WDIR}/kernel-5.10/scripts/kconfig/merge_config.sh"
 
 # Build options
@@ -94,15 +94,15 @@ cd "${WDIR}/kernel"
 # Main cooking progress
 build_kernel(){
     ( env ${GKI_KERNEL_BUILD_OPTIONS} ./build/build.sh || exit 1 ) && \
-        ( cp "${WDIR}/out/target/product/a16/obj/KERNEL_OBJ/boot.img" "${WDIR}/dist" 
-        cp "${WDIR}/out/target/product/a16/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" "${WDIR}/dist" )
+        ( cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/boot.img" "${WDIR}/dist" 
+        cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" "${WDIR}/dist" )
 }
 
 build_tar(){
     echo -e "\n[INFO] Creating an Odin flashable tar..\n"
 
     cd "${WDIR}/dist"
-    tar -cvf "KernelSU-Next-SM-A165F-${BUILD_KERNEL_VERSION}.tar" boot.img && rm boot.img
+    tar -cvf "KernelSU-Next-SM-a245F-${BUILD_KERNEL_VERSION}.tar" boot.img && rm boot.img
     echo -e "\n[INFO] Build Finished..!\n"
     cd "${WDIR}"
 }
