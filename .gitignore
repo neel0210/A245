@@ -137,3 +137,5 @@ vbmeta.img.signed
 #dir
 dist/
 out/
+/kernel/prebuilts*
+/prebuilts
