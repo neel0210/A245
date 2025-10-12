@@ -1070,7 +1070,7 @@ if [ -n "${DIST_CMDS}" ]; then
   eval ${DIST_CMDS}
 
   # Copy the build kernel images to DIST_DIR
-  cp "${WDIR}/out/target/product/a16/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" ${DIST_DIR}/
+  cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" ${DIST_DIR}/
 
   # Copy the ramdisk to DIST_DIR
   cp "${WDIR}/oem_prebuilt_images/gki-ramdisk.lz4" ${DIST_DIR}/
