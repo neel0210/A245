@@ -155,11 +155,11 @@ build_kernel() {
 # ========================================
 # CREATE TAR
 # ========================================
-build_tar() {
+build_tar(){
     echo -e "\n[INFO] Creating an Odin flashable tar..\n"
-    cd "${DIST_DIR}"
-    tar -cvf "KernelSU-Next-SM-a245F-${BUILD_KERNEL_VERSION}.tar" boot.img
-    rm boot.img
+
+    cd "${WDIR}/dist"
+    tar -cvf "KernelSU-Next-SM-a245F-${BUILD_KERNEL_VERSION}.tar" boot.img && rm boot.img
     echo -e "\n[INFO] Build Finished..!\n"
     cd "${WDIR}"
 }
