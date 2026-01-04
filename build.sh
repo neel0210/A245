@@ -139,19 +139,17 @@ if [ "$MAKE_MENUCONFIG" = "1" ]; then
     export HERMETIC_TOOLCHAIN=0
 fi
 
+
+cd "${WDIR}/kernel"
 # ========================================
 # BUILD KERNEL
 # ========================================
-cd "${WDIR}/kernel"
 
-build_kernel() {
-    env ${GKI_KERNEL_BUILD_OPTIONS} ./build/build.sh || exit 1
-
-    # Copy outputs to dist
-    cp "${OUT_DIR}/boot.img" "${DIST_DIR}"
-    cp "${KERNEL_DIR}/arch/arm64/boot/Image.gz" "${DIST_DIR}"
+build_kernel(){
+#    ( env ${GKI_KERNEL_BUILD_OPTIONS} ./build/build.sh || exit 1 ) && \
+        ( cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/boot.img" "${WDIR}/dist" 
+        cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" "${WDIR}/dist" )
 }
-
 # ========================================
 # CREATE TAR
 # ========================================
