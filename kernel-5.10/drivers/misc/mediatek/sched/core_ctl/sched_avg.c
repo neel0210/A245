@@ -17,6 +17,14 @@
 
 #define TAG "sched_avg"
 
+/* Stub for cfs_rq_of: missing in this kernel */
+static inline struct cfs_rq *cfs_rq_of(struct sched_entity *se)
+{
+    // Optional: log a warning if ever called
+    pr_warn("cfs_rq_of() stub called in sched_avg\n");
+    return NULL;
+}
+
 enum over_thres_type {
 	NO_OVER_THRES = 0,
 	OVER_DN_THRES,
