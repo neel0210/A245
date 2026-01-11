@@ -51,7 +51,7 @@ fi
 # LOCALVERSION
 # ========================================
 mkdir -p "${WDIR}/custom_defconfigs"
-echo -e "CONFIG_LOCALVERSION_AUTO=n\nCONFIG_LOCALVERSION=\"-KKRT-${BUILD_KERNEL_VERSION}\"\n" > "${WDIR}/custom_defconfigs/version_defconfig"
+echo -e "CONFIG_LOCALVERSION_AUTO=n\nCONFIG_LOCALVERSION=\"-KKRT-Ubuntu-LXC-Docker-${BUILD_KERNEL_VERSION}\"\n" > "${WDIR}/custom_defconfigs/version_defconfig"
 
 # ========================================
 # TELEGRAM: BUILD STARTED MESSAGE
@@ -146,7 +146,7 @@ cd "${WDIR}/kernel"
 # ========================================
 
 build_kernel(){
-#    ( env ${GKI_KERNEL_BUILD_OPTIONS} ./build/build.sh || exit 1 ) && \
+    ( env ${GKI_KERNEL_BUILD_OPTIONS} ./build/build.sh || exit 1 ) && \
         ( cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/boot.img" "${WDIR}/dist" 
         cp "${WDIR}/out/target/product/a24/obj/KERNEL_OBJ/kernel-5.10/arch/arm64/boot/Image.gz" "${WDIR}/dist" )
 }
